@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+    background-color: aqua;
+}
+
+
+.header {
+    .container-nav {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 2em;
+        .container-link{
+            display: flex;
+        }
+    }
+}
