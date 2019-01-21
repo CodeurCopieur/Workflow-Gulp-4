@@ -19,7 +19,7 @@ const pug = () =>
           .pipe(gp.pug({
               pretty: true
           }))
-          .pipe(gulp.dest(paths.html.dest))
+          .pipe(gulp.dest(paths.html.dest));
 
 const sass = () =>
       gulp.src(paths.css.src)
@@ -38,7 +38,18 @@ const sass = () =>
            .pipe(gp.cssbeautify({indent: ' '}))
            .pipe(gp.csso())
            .pipe(gp.sourcemaps.write())
-           .pipe(gulp.dest(paths.css.dest))          
+           .pipe(gulp.dest(paths.css.dest));  
+
+
+const watch = () =>
+        gulp.watch('./src/pug/pages/**/*.pug', pug)
+        gulp.watch('./src/static/sass/**/*.scss', sass)
+        
+
+const build = gulp.series(gulp.parallel(pug, sass, watch));
 
 exports.pug = pug;
 exports.sass = sass;
+exports.watch = watch;
+
+gulp.task('default', build);
