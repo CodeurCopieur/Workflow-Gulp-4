@@ -31,7 +31,7 @@ const sass = () =>
            .pipe(gp.autoprefixer({
                 browsers: ['last 10 versions']
             }))
-            .on("error", gp.notify.onError({
+            .on("Erreur", gp.notify.onError({
                 title: "stile"
             }))
            .pipe(gp.csscomb())
